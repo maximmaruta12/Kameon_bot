@@ -1,1 +1,1 @@
-worker: python keksik-bot.py
+worker: python Kameon-bot.py
