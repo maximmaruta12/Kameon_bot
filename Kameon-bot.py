@@ -174,7 +174,13 @@ async def num_msg(ctx, member: discord.Member = None):
                           colour=discord.Colour.green())
     await ctx.send(embed=embed)
 
-
+    
+@Bot.command()
+async def dog(ctx):
+    emb = discord.Embed(description= f'**Вот тебе котик:**', color=0x6fdb9e)
+    emb.set_image(url=nekos.img('dog'))
+    await ctx.send(embed=emb)
+    
 @Bot.command()
 async def ping(ctx):
     await ctx.send('pong')
