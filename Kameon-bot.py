@@ -95,6 +95,30 @@ async def say(ctx, channel: discord.TextChannel, *, cnt):  # Удаляет на
 
     
 @Bot.command()
+async def user(ctx, member: discord.Member):
+    member = ctx.author if not member else member
+    roles = [role for role in member.roles]
+
+    embed = discord.Embed(colour = member.color, timestamp = ctx.message.created_at)
+
+    embed.set_author(name = f"Информация пользователя - {member} ")
+    embed.set_thumbnail(url = member.avatar_url)
+    embed.set_footer(text = f"Запросил : {ctx.author}", icon_url = ctx.author.avatar_url)
+
+    embed.add_field(name = "ID", value = member.id)
+    embed.add_field(name = "Name", value = member.display_name)
+
+    embed.add_field(name = "Зарегистрирован ", value = member.created_at.strftime("%a, %#d, %B, %Y, %I:%M %p UTC"))
+    embed.add_field(name = "Вошел на сервер", value = member.joined_at.strftime("%a, %#d, %B, %Y, %I:%M %p UTC"))
+
+    embed.add_field(name = f"Роли({len(roles)})", value = "".join(role.mention for role in roles))
+    embed.add_field(name = "Высшая роль", value = member.top_role.mention)
+
+    embed.add_field(name = "Бот", value = member.Bot)
+
+    await ctx.send(embed = embed)
+    
+@Bot.command()
 async def wiki(ctx, *, text):
     wikipedia.set_lang("ru")
     new_page = wikipedia.page(text)
