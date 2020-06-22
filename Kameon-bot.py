@@ -78,7 +78,7 @@ async def avatar(ctx, member: discord.Member):
         await ctx.send(member.avatar_url)
 
 @Bot.command()
-async def emoties_url(ctx, emotie: discord.Emoji):
+async def emoji(ctx, emotie: discord.Emoji):
   color = discord.Colour.red()
   emb = discord.Embed(title = 'Держи своё емодзи', colour = color)
   emb.set_image(url = emotie.url)
