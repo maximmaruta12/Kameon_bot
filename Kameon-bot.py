@@ -94,6 +94,20 @@ async def my_roles(ctx):
 async def say(ctx, channel: discord.TextChannel, *, cnt):  # Удаляет написанное вами сообщение
     await channel.send(cnt)
 
+    
+@Bot.command()
+async def wiki(ctx, *, text):
+    wikipedia.set_lang("ru")
+    new_page = wikipedia.page(text)
+    summ = wikipedia.summary(text)
+    emb = discord.Embed(
+        title= new_page.title,
+        description= summ,
+        color = 0xc582ff)
+
+    await ctx.send(embed=emb)
+    
+    
 
 @Bot.command()
 async def weather(ctx, *, name):
