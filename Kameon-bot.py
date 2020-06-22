@@ -486,4 +486,4 @@ async def info(ctx, user: discord.Member):
 
 
 token = os.environ.get('BOT_TOKEN')
-Bot.run('token')
+Bot.run(str(token))
