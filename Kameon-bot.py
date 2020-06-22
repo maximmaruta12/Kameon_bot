@@ -77,7 +77,7 @@ async def on_message(message):
     if message.channel.id == (723888963521347594 or 723252561758388276):
         await message.add_reaction('✅')
         await message.add_reaction('❎')
-    await Bot.process_command(message)
+    await Bot.process_commands(message)
         
         
         
