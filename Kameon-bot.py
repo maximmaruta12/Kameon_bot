@@ -81,8 +81,19 @@ async def on_message(message):
         
         
         
-       
-    
+@Bot.command()
+async def myinfo(ctx):
+    roles = ctx.author.roles
+    role_list = ""
+    for role in roles:
+        role_list += f"<@&{role.id}> "
+    emb = discord.Embed(title='Profile', colour = discord.Colour.purple())
+    emb.set_thumbnail(url=ctx.author.avatar_url)
+    emb.add_field(name='Имя пользователя', value=ctx.author.mention)
+    emb.add_field(name='Роли', value=role_list)
+    if 'online' in ctx.author.desktop_status:
+        emb.add_field(name="Статус", value=ctx.author.status)
+        await ctx.send(embed = emb)
 
 
 @Bot.command()
