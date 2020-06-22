@@ -70,13 +70,15 @@ async def avatar(ctx, member: discord.Member):
         await ctx.send(message.author.avatar_url)  
     else:  
         await ctx.send(member.avatar_url)
-      
+     
 
 @Bot.event
 async def on_message(message):
     if message.channel.id == (723888963521347594 or 723252561758388276):
-        await message.add_reaction(':white_check_mark:')
-        await message.add_reaction(':negative_squared_cross_mark:')
+        await message.add_reaction('✅')
+        await message.add_reaction('❎')
+    await Bot.process_command(message)
+        
         
         
        
