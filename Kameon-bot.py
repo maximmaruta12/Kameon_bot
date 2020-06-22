@@ -113,7 +113,9 @@ async def wiki(ctx, *, text):
 
     await ctx.send(embed=emb)
     
-    
+@Bot.command()
+async def r_text(ctx, *, args):
+    await ctx.send(f"{''.join(random.sample(args,len(args)))}")
 
 @Bot.command()
 async def weather(ctx, *, name):
