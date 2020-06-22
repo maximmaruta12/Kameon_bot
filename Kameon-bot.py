@@ -114,7 +114,6 @@ async def user(ctx, member: discord.Member):
     embed.add_field(name = f"Роли({len(roles)})", value = "".join(role.mention for role in roles))
     embed.add_field(name = "Высшая роль", value = member.top_role.mention)
 
-    embed.add_field(name = "Бот", value = member.Bot)
 
     await ctx.send(embed = embed)
     
