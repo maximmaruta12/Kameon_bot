@@ -176,6 +176,10 @@ async def num_msg(ctx, member: discord.Member = None):
 
 
 @Bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
+    
+@Bot.command()
 @commands.has_permissions(administrator=True)
 async def clear(ctx, amount: int):
     await ctx.channel.purge(limit=amount)
