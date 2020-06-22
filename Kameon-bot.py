@@ -149,7 +149,7 @@ async def time(ctx):
 
 
 @Bot.command()
-async def cat(ctx):
+async def _cat(ctx):
         emb = discord.Embed(description= f'**Вот тебе котик:**', color=0x6fdb9e)
         emb.set_image(url=nekos.img('cat')) 
         await ctx.send(embed=emb)
