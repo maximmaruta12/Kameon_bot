@@ -177,8 +177,8 @@ async def num_msg(ctx, member: discord.Member = None):
     
 @Bot.command()
 async def dog(ctx):
-    emb = discord.Embed(description= f'**Вот тебе котик:**', color=0x6fdb9e)
-    emb.set_image(url=nekos.img('dog'))
+    emb = discord.Embed(description= f'**Вот тебе собачка:**', color=0x6fdb9e)
+    emb.set_image(url=nekos.dog())
     await ctx.send(embed=emb)
     
 @Bot.command()
