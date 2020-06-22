@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import datetime
 import os
 import wikipedia
+import nekos
 #import youtube_dl
 
 
@@ -147,6 +148,13 @@ async def time(ctx):
     await ctx.send(embed=emb)
 
 
+@Bot.command()
+async def cat(ctx):
+        emb = discord.Embed(description= f'**Вот тебе котик:**', color=0x6fdb9e)
+        emb.set_image(url=nekos.img('cat')) 
+        await ctx.send(embed=emb)
+    
+    
 @Bot.command()
 async def ran_color(ctx):
     clr = (random.randint(0, 16777215))
