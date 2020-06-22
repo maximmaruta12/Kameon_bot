@@ -26,14 +26,6 @@ async def on_ready():
     await Bot.change_presence(status=discord.Status.online, activity=discord.Game('k!help'))
 
 
-@Bot.event
-async def on_command_error(ctx, error):
-    ctx_command = str(ctx.message.content.split(" ")[0])
-    if isinstance(error, commands.CommandNotFound):
-        await ctx.message.delete()
-        await ctx.send(f"{ctx.message.author.mention} ``Прости ,но команды нету ¯\_(ツ)_/¯``",
-                       delete_after=3)
-
 hueplet_chance = 5
 prefix = "k!"
 
