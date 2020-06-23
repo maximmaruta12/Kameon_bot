@@ -579,9 +579,9 @@ async def info(ctx, user: discord.Member):
     emb.set_author(name=user.name, url=user.avatar_url)
     await ctx.send(embed=emb)
 
-
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
-        Bot.load_extension(f'cogs.{filename[:-3]}')                 
+        Bot.load_extension(f'cogs.{filename[:-3]}')  
+               
 token = os.environ.get('BOT_TOKEN')
 Bot.run(str(token))
