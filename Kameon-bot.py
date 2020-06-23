@@ -103,7 +103,7 @@ async def say(ctx, channel: discord.TextChannel, *, cnt):  # Удаляет на
     await channel.send(cnt)
 
     
-POST_ID = 725067597426589698
+POST_ID = 725083322614808697
 
 ROLES = {
 '🟩': 724953981373251694,
