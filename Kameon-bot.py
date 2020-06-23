@@ -23,7 +23,7 @@ Bot.remove_command('help')
 @Bot.event
 async def on_ready():
     print("Bot is online")
-    await Bot.change_presence(status=discord.Status.online, activity=discord.Game('k!help'))
+    await Bot.change_presence(status=discord.Status.idle, activity=discord.Game('k!help'))
 
 
 hueplet_chance = 5
