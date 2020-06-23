@@ -177,7 +177,13 @@ async def cat(ctx):
     emb.set_image(url=nekos.cat())
     await ctx.send(embed=emb)
     
-    
+ 
+@Bot.event
+async def on_member_join(member):
+    if member.guild.id == int(701723124202471455):
+        await Bot.get_channel(709019591535493151).send(f"Приветствую тебя на нашем сервере, {member.mention}!")
+                   
+                   
 @Bot.command()
 async def ran_color(ctx):
     clr = (random.randint(0, 16777215))
