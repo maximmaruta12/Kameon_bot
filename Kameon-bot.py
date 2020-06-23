@@ -103,6 +103,83 @@ async def say(ctx, channel: discord.TextChannel, *, cnt):  # Удаляет на
     await channel.send(cnt)
 
     
+POST_ID = 725067597426589698
+
+ROLES = {
+'🟩': 724953981373251694,
+'🟪': 724953899265687592, 
+'🟧': 725069938875695204,
+'🟥': 725069721510346762, 
+'🟦': 724954042744176660, 
+}
+
+EXCROLES = () 
+
+MAX_ROLES_PER_USER = 7
+
+
+
+
+
+
+
+@Bot.event
+async def on_raw_reaction_add(payload):
+    if payload.message_id == POST_ID:
+        channel = Bot.get_channel(payload.channel_id) 
+        message = await channel.fetch_message(payload.message_id) # получаем объект сообщения
+        member = utils.get(message.guild.members, id=payload.user_id) # получаем объект пользователя который поставил реакцию
+ 
+    try:
+        emoji = str(payload.emoji) # эмоджик который выбрал юзер
+        role = utils.get(message.guild.roles, id=ROLES[emoji]) # объект выбранной роли (если есть)
+           
+        if(len([i for i in member.roles if i.id not in EXCROLES]) <= MAX_ROLES_PER_USER):
+            await member.add_roles(role)
+            print('[log] Участнику - {0.display_name}, успешно была выдана роль: {1.name}'.format(member, role))
+        else:
+            await message.remove_reaction(payload.emoji, member)
+            print('[log] У {0.display_name} слишком много ролей, что-бы выдать еще...'.format(member))
+           
+    except KeyError as e:
+        print('[log] Не обнаруженно роли для эмодзи: ' + emoji)
+    except Exception as e:
+        print(repr(e))
+
+
+@Bot.event
+async def on_raw_reaction_remove(payload):
+    channel = Bot.get_channel(payload.channel_id) 
+    message = await channel.fetch_message(payload.message_id)
+    member = utils.get(message.guild.members, id=payload.user_id)
+ 
+    try:
+        emoji = str(payload.emoji)
+        role = utils.get(message.guild.roles, id=ROLES[emoji])
+ 
+        await member.remove_roles(role)
+        print('[log] Роль - {1.name}, была успешно снята у участника: {0.display_name}'.format(member, role))
+ 
+    except KeyError as e:
+        print('[log] Не обнаруженно роли для эмодзи: ' + emoji)
+    except Exception as e:
+        print(repr(e))
+
+
+
+@Bot.event
+async def on_message_delete(message):
+    channelDelete = discord.utils.get(message.guild.channels, id = 725064979039911966)
+    DeleteMessage = discord.Embed(title= 'Сообщение было удалено', color = 0x383a3d)
+    DeleteMessage.add_field(name= 'Удалённое сообщение:', value = f'{message.content}')
+    DeleteMessage.add_field(name= 'Автор удалённого сообщения:', value = f'{message.author.mention}')
+    DeleteMessage.add_field(name= 'В канале:', value = f'{message.channel}')
+    for a in message.attachments:
+        if a.filename.endswith(('.jpg', '.jpeg', '.png')):
+            DeleteMessage.set_image(url = a.proxy_url)
+    await channelDelete.send(embed = DeleteMessage)
+    
+    
 @Bot.command()
 async def user(ctx, member: discord.Member):
     member = ctx.author if not member else member
