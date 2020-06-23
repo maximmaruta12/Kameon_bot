@@ -183,6 +183,13 @@ async def on_member_join(member):
     if member.guild.id == int(701723124202471455):
         await Bot.get_channel(709019591535493151).send(f"Приветствую тебя на нашем сервере, {member.mention}!")
                    
+@Bot.event
+async def on_member_remove(member):
+    if member.guild.id == int(701723124202471455):
+        await Bot.get_channel(724917766565658656).send(f'Пока {member}!')
+        await ctx.send.member('Пока {member.mention}, надеюсь ты к нам ещё вернёшся, если что то вот ссылка https://discord.gg/WcmS8Km')
+    
+                      
                    
 @Bot.command()
 async def ran_color(ctx):
