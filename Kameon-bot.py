@@ -67,7 +67,7 @@ async def avatar(ctx, member : discord.Member = None):
     user = ctx.message.author if (member == None) else member
     await ctx.message.delete()
     embed = discord.Embed(title=f'{user}`s avatar', description= f'[link here]({user.avatar_url})', color=user.color)
-    embed.set_footer(text= f'Requested: {ctx.message.author}', icon_url= str(ctx.message.author.avatar_url))
+    embed.set_footer(text= f'Запросил: {ctx.message.author}', icon_url= str(ctx.message.author.avatar_url))
     embed.set_image(url=user.avatar_url)
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
