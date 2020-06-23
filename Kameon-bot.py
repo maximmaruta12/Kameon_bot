@@ -583,7 +583,7 @@ async def info(ctx, user: discord.Member):
 @Bot.command()
 async def load(ctx, extension):
     Bot.load_extension(f'cogs.{extensions}')
-    await ctx.send(“loaded”)
+    await ctx.send("loaded")
                    
 @Bot.command()
 async def reload(ctx, extensions):
