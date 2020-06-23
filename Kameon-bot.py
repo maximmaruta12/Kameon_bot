@@ -579,9 +579,23 @@ async def info(ctx, user: discord.Member):
     emb.set_author(name=user.name, url=user.avatar_url)
     await ctx.send(embed=emb)
 
-for filename in os.listdir('./cogs'):
-    if filename.endswith('.py'):
-        Bot.load_extension(f'cogs.{filename[:-3]}')  
+@Bot.command()
+async def load(ctx, extensions):
+    Bot.load_extension(f'cogs.{extensions}') 
+    await ctx.send('loaded')
+
+@Bot.command()
+async def reload(ctx, extensions):
+    Bot.load_extension(f'cogs.{extensions}')
+    Bot.unload_extensions(f'cogs.{extensions}')
+    await ctx.send('reloaded')
+
+@Bot.command()
+async def unload(ctx, extensions):
+    Bot.unload_extension(f'cogs.{extensions}') 
+    await ctx.send('unloaded')
+    
+Bot.load_extension('x0')
                
 token = os.environ.get('BOT_TOKEN')
 Bot.run(str(token))
