@@ -580,21 +580,8 @@ async def info(ctx, user: discord.Member):
     await ctx.send(embed=emb)
 
 
-@Bot.command()
-async def load(ctx, extension):
-    Bot.load_extension(f'cogs.{extensions}')
-    await ctx.send("loaded")
-                   
-@Bot.command()
-async def reload(ctx, extensions):
-    Bot.unload_extension(f'cogs.{extensions}')
-    Bot.load_extension(f'cogs.{extensions}')
-    await ctx.send('Reloaded')
-                   
-@Bot.command()
-async def unload(ctx, extensions):
-    Bot.unload_extension(f'cogs.{extensions}')
-    await ctx.send("Unloaded")
-                   
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        Bot.load_extension(f'cogs.{filename[:-3]}')                 
 token = os.environ.get('BOT_TOKEN')
 Bot.run(str(token))
