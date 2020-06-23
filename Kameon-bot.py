@@ -548,23 +548,23 @@ async def get_role(ctx, role=None):
 async def help(ctx):
     emb = discord.Embed(title='Навигация по командам :page_with_curl:', colour=discord.Colour.green())
     emb.set_author(name=Bot.user.name, icon_url=Bot.user.avatar_url)
-    emb.add_field(name='k!game', value='Игра орёл и решка')
-    emb.add_field(name='k!clear', value='Очистка чата(Доступно лишь адмиинам)')
-    emb.add_field(name='k!ban либо k!kick', value='Команды для для кика и бана участников сервера')
-    emb.add_field(name='k!saper', value='Команда для игры --"сапёр"')
-    emb.add_field(name='k!choose', value='Выбирает любой параметр рандомно. Пример: "k!choose 1 2 3 4"')
-    emb.add_field(name='k!userinfo', value='Информация об участнике сервера')
-    emb.add_field(name='k!countdown', value='Таймер(Пример: "k!countdown секунды")')
-    emb.add_field(name='k!mute', value='Мут участника(Команда доступна лишь людям имеющим роль "КАРАТЕЛЬ")')
-    emb.add_field(name='k!cov', value='Статистика заболевшим коронавирусом в РФ')
-    emb.add_field(name='k!weather',
+    emb.add_field(name=f'{prefix}game', value='Игра орёл и решка')
+    emb.add_field(name=f'{prefix}clear', value='Очистка чата(Доступно лишь адмиинам)')
+    emb.add_field(name=f'k!ban либо k!kick', value='Команды для для кика и бана участников сервера')
+    emb.add_field(name=f'k!saper', value='Команда для игры --"сапёр"')
+    emb.add_field(name=f'k!choose', value='Выбирает любой параметр рандомно. Пример: "k!choose 1 2 3 4"')
+    emb.add_field(name=f'k!userinfo', value='Информация об участнике сервера')
+    emb.add_field(name=f'k!countdown', value='Таймер(Пример: "k!countdown секунды")')
+    emb.add_field(name=f'k!mute', value='Мут участника(Команда доступна лишь людям имеющим роль "КАРАТЕЛЬ")')
+    emb.add_field(name=f'k!cov', value='Статистика заболевшим коронавирусом в РФ')
+    emb.add_field(name=f'k!weather',
                   value='Подскажет вам погоду в любом городе(прим. "k!weather Москва(можете написать тут любой другой город)")')
-    emb.add_field(name='k!genpass',
+    emb.add_field(name=f'k!genpass',
                   value='Генератор пароля (прим. "k!genpass 10(Длина пароля), 1(кол-во паролей котрых надо сгенерировать)")')
-    emb.add_field(name='k!calc',
+    emb.add_field(name=f'k!calc',
                   value='Простой калькулятор(+ = сложить, - = вычесть, * = умножить, / = делить, ** = степень, // = целочисленное деление)')
-    emb.add_field(name='k!search_video', value='Ищет видео на YouTube(прим. "k!search_video лайфхаки")')
-    emb.add_field(name='k!text_timer', value='Команды для измерения текста')
+    emb.add_field(name=f'k!search_video', value='Ищет видео на YouTube(прим. "k!search_video лайфхаки")')
+    emb.add_field(name=f'k!text_timer', value='Команды для измерения текста')
     emb.set_footer(text=f"Запросил: {ctx.author}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=emb)
 
