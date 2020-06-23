@@ -63,11 +63,14 @@ async def userinfo(ctx, Member: discord.Member = None):
 
 
 @Bot.command()
-async def avatar(ctx, member: discord.Member):
-    if member == None:
-        await ctx.send(ctx.message.author.avatar_url)
-    else:
-        await ctx.send(member.avatar_url)
+async def avatar(ctx, member : discord.Member = None):
+    user = ctx.message.author if (member == None) else member
+    await ctx.message.delete()
+    embed = discord.Embed(title=f'{user}`s avatar', description= f'[link here]({user.avatar_url})', color=user.color)
+    embed.set_footer(text= f'Requested: {ctx.message.author}', icon_url= str(ctx.message.author.avatar_url))
+    embed.set_image(url=user.avatar_url)
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
 
 @Bot.command()
 async def emoji(ctx, emotie: discord.Emoji):
