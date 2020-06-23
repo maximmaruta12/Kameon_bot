@@ -74,10 +74,16 @@ async def avatar(ctx, member : discord.Member = None):
 
 @Bot.command()
 async def emoji(ctx, emotie: discord.Emoji):
-  color = discord.Colour.red()
-  emb = discord.Embed(title = 'Держи своё емодзи', colour = color)
-  emb.set_image(url = emotie.url)
-  await ctx.send(embed=emb)
+    if emotie == None:
+        await ctx.message.delete()
+        await ctx.send('Обязательно введите эмодзи!!!')
+    else:
+        await ctx.message.delete()
+        color = discord.Colour.red()
+        emb = discord.Embed(title = 'Держи своё емодзи', colour = color)
+        emb.set_image(url = emotie.url)
+        await ctx.send(embed=emb)
+    
        
 @Bot.command()
 async def domination(ctx):
