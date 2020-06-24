@@ -333,7 +333,7 @@ async def ping(ctx):
 async def clear(ctx, amount: int):
     await ctx.channel.purge(limit=amount)
     embed = discord.Embed(description=f"Удалено {amount} сообщений", color=discord.Colour.green())
-    await ctx.send(embed=embed, delete_after(5))
+    await ctx.send(embed=embed, delete_after = 3)
 
 
 @Bot.command()
