@@ -178,7 +178,11 @@ async def on_message_delete(message):
         if a.filename.endswith(('.jpg', '.jpeg', '.png')):
             DeleteMessage.set_image(url = a.proxy_url)
     await channelDelete.send(embed = DeleteMessage)
-    
+ 
+
+@Bot.command()
+async def send_ch(ctx, text):
+    await ctx.send(f'{message.author.mention}, сказал {text}')
     
 @Bot.command()
 async def user(ctx, member: discord.Member):
@@ -328,7 +332,7 @@ async def ping(ctx):
 @commands.has_permissions(administrator=True)
 async def clear(ctx, amount: int):
     await ctx.channel.purge(limit=amount)
-    embed = discord.Embed(description=f"Удалено {amount} сообщений", color=discord.Colour.green()))
+    embed = discord.Embed(description=f"Удалено {amount} сообщений", color=discord.Colour.green())
     await ctx.send(embed=embed, delete_after(5))
 
 
