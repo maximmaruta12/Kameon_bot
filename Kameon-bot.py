@@ -13,6 +13,8 @@ import datetime
 import os
 import wikipedia
 import nekos
+import googletrans
+from googletrans import Translator
 #import youtube_dl
 
 
@@ -165,7 +167,12 @@ async def on_raw_reaction_remove(payload):
     except Exception as e:
         print(repr(e))
 
-
+@Bot.command()
+async def translate(ctx, lang: str, r: str, text):
+    result = translator.translate(text, src = lang, dest = r)
+    emb = discord.Embed(title = 'Перевод:')
+    emb.add_field(name = 'Было', value = text)
+    emb.add_field(name = 'Стало', value = result)
 
 @Bot.event
 async def on_message_delete(message):
